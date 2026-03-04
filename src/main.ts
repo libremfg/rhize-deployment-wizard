@@ -30,8 +30,13 @@ function initApp() {
 
   appContainer.innerHTML = `
     <div class="app-header">
-      <h1>🚀 Rhize Deployment Wizard</h1>
-      <p>Interactive questionnaire for deploying Rhize across different infrastructure types</p>
+      <div class="header-content">
+        <img src="https://docs.rhize.com/images/logo.svg" alt="Rhize" class="rhize-logo" />
+        <div>
+          <h1>Rhize Deployment Wizard</h1>
+          <p>Interactive questionnaire for deploying Rhize across different infrastructure types</p>
+        </div>
+      </div>
     </div>
     
     <div class="app-container">
