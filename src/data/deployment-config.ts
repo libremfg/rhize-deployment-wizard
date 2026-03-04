@@ -340,6 +340,13 @@ export const deploymentDomains: DeploymentDomain[] = [
         description: 'Commercial identity platform. Strong enterprise features and compliance certifications.',
         documentationUrl: 'https://www.okta.com/',
       },
+      {
+        id: 'generic-oidc',
+        name: 'Generic OpenID Connect',
+        level: 'supported',
+        description: 'Any OIDC-compliant identity provider. Rhize integrates with standard OIDC flows.',
+        documentationUrl: 'https://docs.rhize.com/explanations/about-openidconnect/',
+      },
     ],
   },
   {
@@ -443,7 +450,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         resourceRequirements: { cpu: '2 cores', memory: '4GB' },
         helmChart: 'baas',
         helmVersion: '0.2.x',
-        documentationUrl: '/docs/baas',
+        documentationUrl: '',
       },
       {
         id: 'isa95',
@@ -453,17 +460,17 @@ export const deploymentDomains: DeploymentDomain[] = [
         resourceRequirements: { cpu: '2 cores', memory: '4GB' },
         helmChart: 'isa95',
         helmVersion: '1.x',
-        documentationUrl: '/docs/isa95',
+        documentationUrl: 'https://docs.rhize.com/isa-95/',
       },
       {
         id: 'admin-ui',
-        name: 'Admin UI',
+        name: 'UI',
         level: 'required',
-        description: 'Web interface for managing Rhize. Built with Preact, real-time data visualization.',
+        description: 'Web interface for managing Rhize.',
         resourceRequirements: { cpu: '0.5 cores', memory: '512MB' },
         helmChart: 'admin-ui',
         helmVersion: '2.x',
-        documentationUrl: '/docs/admin-ui',
+        documentationUrl: '',
       },
       {
         id: 'workflow',
@@ -473,7 +480,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         resourceRequirements: { cpu: '2 cores', memory: '4GB' },
         helmChart: 'workflow',
         helmVersion: '1.x',
-        documentationUrl: '/docs/workflow',
+        documentationUrl: '',
       },
       {
         id: 'typescript-host',
@@ -483,7 +490,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         resourceRequirements: { cpu: '2 cores', memory: '4GB' },
         helmChart: 'typescript-host-service',
         helmVersion: '1.x',
-        documentationUrl: '/docs/typescript-host',
+        documentationUrl: '',
       },
       {
         id: 'restate',
