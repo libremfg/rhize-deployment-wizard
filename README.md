@@ -1,6 +1,6 @@
-# Rhize Deployment Roadmap
+# Rhize Deployment Wizard
 
-An interactive questionnaire for deploying Rhize across different infrastructure types and cloud platforms. Inspired by [roadmap.sh](https://roadmap.sh), this tool guides users through deployment decisions and generates customized deployment checklists.
+An interactive questionnaire for deploying Rhize across different infrastructure types and cloud platforms. This tool guides users through deployment decisions and generates customized deployment checklists.
 
 ## Features
 
@@ -42,7 +42,7 @@ npm run preview
 2. **Automated Deployment**
    - Push to `main` branch
    - GitHub Actions automatically builds and deploys
-   - Site live at: `https://libremfg.github.io/rhize`
+   - Site live at: `https://libremfg.github.io/rhize-deployment-wizard/`
 
 3. **Manual Deployment**
    ```bash
@@ -52,7 +52,7 @@ npm run preview
 
 ## Deployment Domains
 
-The questionnaire covers these infrastructure domains:
+The wizard guides you through selection of these infrastructure domains:
 
 ### 1. **Deployment Target**
 Choose your orchestration platform:
@@ -293,7 +293,7 @@ state.subscribe(() => {
 ## Contributing
 
 1. Fork and clone the repository
-2. Create feature branch: `git checkout -b feature/new-option`
+2. Create feature branch: `git checkout -b feature/new-domain`
 3. Make changes and test locally: `npm run dev`
 4. Build and verify: `npm run build`
 5. Submit pull request
@@ -319,4 +319,4 @@ For questions or issues:
 
 ---
 
-**Generated:** Rhize Deployment Roadmap v1.0.0
+**Generated:** Rhize Deployment Wizard v1.0.0
