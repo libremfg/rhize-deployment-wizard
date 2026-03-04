@@ -4,7 +4,7 @@ An interactive questionnaire for deploying Rhize across different infrastructure
 
 ## Features
 
-✨ **Interactive Roadmap** – Visual questionnaire for infrastructure selection
+✨ **Interactive Wizard** – Visual questionnaire for infrastructure selection
 🔄 **Real-time Validation** – Dependency checks and conflict detection
 📋 **Auto-generated Checklists** – Markdown, HTML, and JSON outputs
 💾 **Auto-save Progress** – Browser localStorage persistence
@@ -225,13 +225,13 @@ The tool enforces deployment constraints:
 src/
 ├── main.ts                    # Application initialization
 ├── types/
-│   └── index.ts              # TypeScript interfaces and RoadmapState class
+│   └── index.ts              # TypeScript interfaces and WizardState class
 ├── data/
 │   ├── deployment-config.ts  # Domain and option definitions
 │   └── presets.ts            # Preset templates
 ├── modules/
 │   ├── validation.ts         # Validation engine
-│   ├── renderer.ts           # SVG roadmap renderer
+│   ├── renderer.ts           # SVG wizard renderer
 │   ├── checklist-generator.ts # Output generation (Markdown/HTML/JSON)
 │   └── storage.ts            # localStorage persistence
 └── styles/
@@ -247,7 +247,7 @@ tsconfig.json                # TypeScript configuration
 Uses a simple observer pattern with localStorage persistence:
 
 ```typescript
-const state = new RoadmapState();
+const state = new WizardState();
 state.selectOption(domainId, optionId);
 state.subscribe(() => {
   // Re-render on state change

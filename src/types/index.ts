@@ -28,7 +28,7 @@ export interface DeploymentDomain {
   options: DeploymentOption[];
 }
 
-export interface RoadmapSnapshot {
+export interface WizardSnapshot {
   selections: Record<string, string[]>; // domainId -> selectedOptionIds
   timestamp: number;
   version: string;
@@ -58,9 +58,9 @@ export interface ValidationResult {
   estimatedResources: ResourceEstimate;
 }
 
-export type Observer = (state: RoadmapState) => void;
+export type Observer = (state: WizardState) => void;
 
-export class RoadmapState {
+export class WizardState {
   private selections: Map<string, Set<string>>;
   private observers: Observer[];
 
@@ -116,7 +116,7 @@ export class RoadmapState {
     this.observers.forEach(observer => observer(this));
   }
 
-  toJSON(): RoadmapSnapshot {
+  toJSON(): WizardSnapshot {
     const selections: Record<string, string[]> = {};
     this.selections.forEach((options, domainId) => {
       selections[domainId] = Array.from(options);
@@ -128,7 +128,7 @@ export class RoadmapState {
     };
   }
 
-  fromJSON(snapshot: RoadmapSnapshot): void {
+  fromJSON(snapshot: WizardSnapshot): void {
     this.selections.clear();
     Object.entries(snapshot.selections).forEach(([domainId, optionIds]) => {
       this.selections.set(domainId, new Set(optionIds));

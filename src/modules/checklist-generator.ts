@@ -1,11 +1,11 @@
-import type { RoadmapSnapshot, DeploymentOption } from '../types/index.js';
+import type { WizardSnapshot, DeploymentOption } from '../types/index.js';
 import { deploymentDomains } from '../data/deployment-config.js';
 
 export class ChecklistGenerator {
-  private snapshot: RoadmapSnapshot;
+  private snapshot: WizardSnapshot;
   private domains = deploymentDomains;
 
-  constructor(snapshot: RoadmapSnapshot) {
+  constructor(snapshot: WizardSnapshot) {
     this.snapshot = snapshot;
   }
 

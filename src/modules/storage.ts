@@ -1,10 +1,10 @@
-import type { RoadmapSnapshot } from '../types/index.js';
+import type { WizardSnapshot } from '../types/index.js';
 
-const STORAGE_KEY = 'rhize-roadmap-state';
+const STORAGE_KEY = 'rhize-wizard-state';
 const STORAGE_VERSION = '1.0.0';
 
 export class StorageManager {
-  static saveSnapshot(snapshot: RoadmapSnapshot): void {
+  static saveSnapshot(snapshot: WizardSnapshot): void {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
     } catch (e) {
@@ -12,12 +12,12 @@ export class StorageManager {
     }
   }
 
-  static loadSnapshot(): RoadmapSnapshot | null {
+  static loadSnapshot(): WizardSnapshot | null {
     try {
       const data = localStorage.getItem(STORAGE_KEY);
       if (!data) return null;
 
-      const snapshot = JSON.parse(data) as RoadmapSnapshot;
+      const snapshot = JSON.parse(data) as WizardSnapshot;
       if (snapshot.version !== STORAGE_VERSION) {
         console.warn('Snapshot version mismatch, ignoring saved state');
         return null;

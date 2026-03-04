@@ -1,7 +1,7 @@
-import type { DeploymentDomain, RoadmapState } from '../types/index.js';
+import type { DeploymentDomain, WizardState } from '../types/index.js';
 
-export class RoadmapRenderer {
-  static render(container: HTMLElement, domains: DeploymentDomain[], state: RoadmapState, onOptionClick: (domainId: string, optionId: string) => void): SVGSVGElement {
+export class WizardRenderer {
+  static render(container: HTMLElement, domains: DeploymentDomain[], state: WizardState, onOptionClick: (domainId: string, optionId: string) => void): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'roadmap-svg');
     svg.setAttribute('viewBox', `0 0 1400 ${domains.length * 220}`);

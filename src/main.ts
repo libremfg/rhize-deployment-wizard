@@ -1,14 +1,14 @@
 import './styles/global.css';
-import { RoadmapState } from './types/index.js';
+import { WizardState } from './types/index.js';
 import { deploymentDomains } from './data/deployment-config.js';
 import { presets } from './data/presets.js';
 import { ValidationEngine } from './modules/validation.js';
 import { StorageManager } from './modules/storage.js';
-import { RoadmapRenderer } from './modules/renderer.js';
+import { WizardRenderer } from './modules/renderer.js';
 import { ChecklistGenerator } from './modules/checklist-generator.js';
 
 // State management
-const state = new RoadmapState();
+const state = new WizardState();
 const validationEngine = new ValidationEngine();
 
 // Load saved state or start fresh
@@ -30,7 +30,7 @@ function initApp() {
 
   appContainer.innerHTML = `
     <div class="app-header">
-      <h1>🚀 Rhize Deployment Roadmap</h1>
+      <h1>🚀 Rhize Deployment Wizard</h1>
       <p>Interactive questionnaire for deploying Rhize across different infrastructure types</p>
     </div>
     
@@ -49,8 +49,8 @@ function initApp() {
       </aside>
 
       <main class="main-content">
-        <div class="roadmap-container">
-          <div id="roadmap-render"></div>
+        <div class="wizard-container">
+          <div id="wizard-render"></div>
         </div>
 
         <div id="validation-area"></div>
@@ -90,7 +90,7 @@ function initApp() {
   attachEventListeners();
 
   // Initial render
-  renderRoadmap();
+  renderWizard();
   updateUI();
 }
 
@@ -155,13 +155,13 @@ function attachEventListeners() {
   });
 }
 
-function renderRoadmap() {
-  const container = document.getElementById('roadmap-render');
+function renderWizard() {
+  const container = document.getElementById('wizard-render');
   if (!container) return;
 
   container.innerHTML = '';
 
-  RoadmapRenderer.render(container, deploymentDomains, state, (domainId, optionId) => {
+  WizardRenderer.render(container, deploymentDomains, state, (domainId, optionId) => {
     const domain = deploymentDomains.find(d => d.id === domainId);
     if (domain && !domain.allowMultiple) {
       // Single select mode: deselect others
@@ -177,7 +177,7 @@ function renderRoadmap() {
 function updateUI() {
   updateProgress();
   updateValidation();
-  renderRoadmap();
+  renderWizard();
 }
 
 function updateProgress() {

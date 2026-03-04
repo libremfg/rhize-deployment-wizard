@@ -1,4 +1,4 @@
-import type { RoadmapSnapshot } from '../types/index.js';
+import type { WizardSnapshot } from '../types/index.js';
 
 export const presets = {
   quickStart: {
@@ -22,7 +22,7 @@ export const presets = {
       },
       timestamp: Date.now(),
       version: '1.0.0',
-    } as RoadmapSnapshot,
+    } as WizardSnapshot,
   },
 
   production: {
@@ -46,7 +46,7 @@ export const presets = {
       },
       timestamp: Date.now(),
       version: '1.0.0',
-    } as RoadmapSnapshot,
+    } as WizardSnapshot,
   },
 
   enterprise: {
@@ -70,7 +70,7 @@ export const presets = {
       },
       timestamp: Date.now(),
       version: '1.0.0',
-    } as RoadmapSnapshot,
+    } as WizardSnapshot,
   },
 
   edgeIot: {
@@ -94,7 +94,7 @@ export const presets = {
       },
       timestamp: Date.now(),
       version: '1.0.0',
-    } as RoadmapSnapshot,
+    } as WizardSnapshot,
   },
 
   demoEnvironment: {
@@ -118,7 +118,7 @@ export const presets = {
       },
       timestamp: Date.now(),
       version: '1.0.0',
-    } as RoadmapSnapshot,
+    } as WizardSnapshot,
   },
 };
 
