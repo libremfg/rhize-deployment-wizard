@@ -1,4 +1,4 @@
-export type Level = 'preferred' | 'supported' | 'suggested' | 'unsupported';
+export type Level = 'required' | 'preferred' | 'supported' | 'suggested' | 'unsupported';
 
 export interface Resources {
   cpu?: string;

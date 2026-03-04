@@ -9,7 +9,7 @@ export const presets = {
         'deployment-target': ['kubernetes'],
         'cloud-platform': ['vultr'],
         'repository': ['gitlab'],
-        'cd-tool': ['helm'],
+        'cd-tool': ['argocd'],
         'container-registry': ['gitlab-registry'],
         'cluster-storage': ['local-path'],
         'cluster-ingress': ['traefik'],

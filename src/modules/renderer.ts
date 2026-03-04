@@ -15,6 +15,7 @@ export class WizardRenderer {
         .domain-label { font-size: 18px; font-weight: 600; fill: #1f2937; }
         .domain-description { font-size: 12px; fill: #6b7280; }
         .option-node { cursor: pointer; }
+        .option-node.required rect { fill: #fecaca; stroke: #dc2626; }
         .option-node.preferred rect { fill: #d1fae5; stroke: #10b981; }
         .option-node.supported rect { fill: #dbeafe; stroke: #3b82f6; }
         .option-node.suggested rect { fill: #fef3c7; stroke: #f59e0b; }
