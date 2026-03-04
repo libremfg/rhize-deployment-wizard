@@ -17,6 +17,7 @@ export interface DeploymentOption {
   helmChart?: string;
   helmVersion?: string;
   documentationUrl?: string;
+  disabled?: boolean; // if true, option is selected but not clickable
 }
 
 export interface DeploymentDomain {

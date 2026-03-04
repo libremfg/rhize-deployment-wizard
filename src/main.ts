@@ -15,6 +15,17 @@ const validationEngine = new ValidationEngine();
 const savedState = StorageManager.loadSnapshot();
 if (savedState) {
   state.fromJSON(savedState);
+} else {
+  // Preselect first deployment target on initial visit
+  state.selectOption('deployment-target', 'kubernetes');
+  
+  // Preselect all Rhize core services
+  const rhizeCoreServices = deploymentDomains.find(d => d.id === 'rhize-core-services');
+  if (rhizeCoreServices) {
+    rhizeCoreServices.options.forEach(option => {
+      state.selectOption('rhize-core-services', option.id);
+    });
+  }
 }
 
 // Subscribe to state changes

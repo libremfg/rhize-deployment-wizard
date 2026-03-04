@@ -15,6 +15,7 @@ export class WizardRenderer {
         .domain-label { font-size: 18px; font-weight: 600; fill: #1f2937; }
         .domain-description { font-size: 12px; fill: #6b7280; }
         .option-node { cursor: pointer; }
+        .option-node.disabled { cursor: not-allowed; opacity: 0.7; }
         .option-node.required rect { fill: #fecaca; stroke: #dc2626; }
         .option-node.preferred rect { fill: #d1fae5; stroke: #10b981; }
         .option-node.supported rect { fill: #dbeafe; stroke: #3b82f6; }
@@ -22,7 +23,7 @@ export class WizardRenderer {
         .option-node.unsupported rect { fill: #e5e7eb; stroke: #9ca3af; }
         .option-node.unselected rect { fill: #f3f4f6; stroke: #d1d5db; }
         .option-node.selected rect { fill: #86efac; stroke: #10b981; stroke-width: 3; }
-        .option-node:hover rect { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)); }
+        .option-node:not(.disabled):hover rect { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)); }
         .option-text { font-size: 13px; font-weight: 500; fill: #111827; pointer-events: none; }
         .option-level { font-size: 11px; fill: #6b7280; pointer-events: none; }
       </style>
@@ -67,13 +68,15 @@ export class WizardRenderer {
 
         const isSelected = state.isSelected(domain.id, option.id);
         const nodeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        nodeGroup.setAttribute('class', `option-node ${isSelected ? 'selected' : option.level}`);
+        nodeGroup.setAttribute('class', `option-node ${isSelected ? 'selected' : option.level}${option.disabled ? ' disabled' : ''}`);
         nodeGroup.setAttribute('transform', `translate(${xOffset}, ${rowY})`);
 
-        // Click handler
-        nodeGroup.addEventListener('click', () => {
-          onOptionClick(domain.id, option.id);
-        });
+        // Click handler (skip for disabled options)
+        if (!option.disabled) {
+          nodeGroup.addEventListener('click', () => {
+            onOptionClick(domain.id, option.id);
+          });
+        }
 
         // Background rect
         const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');

@@ -447,6 +447,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         helmChart: 'baas',
         helmVersion: '0.2.x',
         documentationUrl: '',
+        disabled: true,
       },
       {
         id: 'isa95',
@@ -457,6 +458,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         helmChart: 'isa95',
         helmVersion: '1.x',
         documentationUrl: 'https://docs.rhize.com/isa-95/',
+        disabled: true,
       },
       {
         id: 'admin-ui',
@@ -467,6 +469,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         helmChart: 'admin-ui',
         helmVersion: '2.x',
         documentationUrl: 'https://docs.rhize.com/versions/v4.0.0/reference/service-config/adminui-configuration/',
+        disabled: true,
       },
       {
         id: 'workflow',
@@ -477,6 +480,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         helmChart: 'workflow',
         helmVersion: '1.x',
         documentationUrl: 'https://docs.rhize.com/versions/v4.0.0/reference/service-config/bpmn-configuration/',
+        disabled: true,
       },
       {
         id: 'typescript-host',
@@ -487,6 +491,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         helmChart: 'typescript-host-service',
         helmVersion: '1.x',
         documentationUrl: '',
+        disabled: true,
       },
       {
         id: 'restate',
@@ -498,6 +503,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         helmChart: 'restate-helm',
         helmVersion: '0.x',
         documentationUrl: 'https://restate.dev/',
+        disabled: true,
       }
     ],
   },
