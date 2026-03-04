@@ -1,0 +1,125 @@
+import type { RoadmapSnapshot } from '../types/index.js';
+
+export const presets = {
+  quickStart: {
+    name: 'Quick Start',
+    description: 'Minimal viable Rhize deployment for evaluation and testing',
+    snapshot: {
+      selections: {
+        'deployment-target': ['kubernetes'],
+        'repository': ['gitlab'],
+        'cd-tool': ['helm'],
+        'container-registry': ['gitlab-registry'],
+        'cluster-storage': ['local-path'],
+        'cluster-ingress': ['traefik'],
+        'cluster-monitoring': ['prometheus-grafana'],
+        'identity-access': ['keycloak'],
+        'core-database': ['postgresql'],
+        'event-streaming': ['redpanda'],
+        'timeseries-db': ['questdb'],
+        'rhize-core-services': ['baas', 'isa95', 'admin-ui'],
+        'rhize-optional-services': [],
+      },
+      timestamp: Date.now(),
+      version: '1.0.0',
+    } as RoadmapSnapshot,
+  },
+
+  production: {
+    name: 'Production',
+    description: 'Full-featured production-ready Rhize deployment with HA and observability',
+    snapshot: {
+      selections: {
+        'deployment-target': ['kubernetes'],
+        'repository': ['gitlab'],
+        'cd-tool': ['argocd'],
+        'container-registry': ['gitlab-registry'],
+        'cluster-storage': ['ceph-rbd'],
+        'cluster-ingress': ['traefik'],
+        'cluster-monitoring': ['lgtm-stack'],
+        'identity-access': ['keycloak'],
+        'core-database': ['postgresql'],
+        'event-streaming': ['redpanda'],
+        'timeseries-db': ['questdb'],
+        'rhize-core-services': ['baas', 'isa95', 'admin-ui', 'workflow', 'restate'],
+        'rhize-optional-services': ['audit-service', 'kpi-service'],
+      },
+      timestamp: Date.now(),
+      version: '1.0.0',
+    } as RoadmapSnapshot,
+  },
+
+  enterprise: {
+    name: 'Enterprise',
+    description: 'Enterprise deployment with managed services and commercial options',
+    snapshot: {
+      selections: {
+        'deployment-target': ['kubernetes'],
+        'repository': ['gitlab'],
+        'cd-tool': ['argocd'],
+        'container-registry': ['acr'],
+        'cluster-storage': ['azure-disk'],
+        'cluster-ingress': ['nginx-ingress'],
+        'cluster-monitoring': ['datadog'],
+        'identity-access': ['azure-ad'],
+        'core-database': ['managed-cloudsql'],
+        'event-streaming': ['apache-kafka'],
+        'timeseries-db': ['influxdb'],
+        'rhize-core-services': ['baas', 'isa95', 'admin-ui', 'workflow', 'typescript-host', 'restate'],
+        'rhize-optional-services': ['appsmith', 'audit-service', 'kpi-service', 'calendar-service'],
+      },
+      timestamp: Date.now(),
+      version: '1.0.0',
+    } as RoadmapSnapshot,
+  },
+
+  edgeIot: {
+    name: 'Edge/IoT',
+    description: 'Lightweight deployment for edge computing and IoT environments',
+    snapshot: {
+      selections: {
+        'deployment-target': ['docker-compose'],
+        'repository': ['github'],
+        'cd-tool': ['docker-compose'],
+        'container-registry': ['docker-hub'],
+        'cluster-storage': ['local-path'],
+        'cluster-ingress': ['nginx-ingress'],
+        'cluster-monitoring': ['prometheus-grafana'],
+        'identity-access': ['keycloak'],
+        'core-database': ['postgresql'],
+        'event-streaming': ['redpanda'],
+        'timeseries-db': ['questdb'],
+        'rhize-core-services': ['baas', 'isa95', 'admin-ui'],
+        'rhize-optional-services': [],
+      },
+      timestamp: Date.now(),
+      version: '1.0.0',
+    } as RoadmapSnapshot,
+  },
+
+  demoEnvironment: {
+    name: 'Demo Environment',
+    description: 'Configuration matching demo3-v4 for showcasing Rhize features',
+    snapshot: {
+      selections: {
+        'deployment-target': ['kubernetes'],
+        'repository': ['gitlab'],
+        'cd-tool': ['argocd'],
+        'container-registry': ['gitlab-registry'],
+        'cluster-storage': ['ceph-rbd'],
+        'cluster-ingress': ['traefik'],
+        'cluster-monitoring': ['lgtm-stack'],
+        'identity-access': ['keycloak'],
+        'core-database': ['postgresql'],
+        'event-streaming': ['redpanda'],
+        'timeseries-db': ['questdb'],
+        'rhize-core-services': ['baas', 'isa95', 'admin-ui', 'workflow'],
+        'rhize-optional-services': ['appsmith', 'grafana-dashboards'],
+      },
+      timestamp: Date.now(),
+      version: '1.0.0',
+    } as RoadmapSnapshot,
+  },
+};
+
+export type PresetName = keyof typeof presets;
