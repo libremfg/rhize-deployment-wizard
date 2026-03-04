@@ -238,7 +238,7 @@ export const deploymentDomains: DeploymentDomain[] = [
       {
         id: 'nvme-local',
         name: 'NVMe Local Storage',
-        level: 'supported',
+        level: 'unsupported',
         description: 'High-performance local NVMe. Best for QuestDB and time-series workloads. No redundancy.',
         resourceRequirements: { storage: '500GB+ NVMe' },
         documentationUrl: '/docs/nvme-storage',

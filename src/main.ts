@@ -16,7 +16,7 @@ const savedState = StorageManager.loadSnapshot();
 if (savedState) {
   state.fromJSON(savedState);
 } else {
-  // Preselect first deployment target on initial visit
+  // Preselect deployment target on initial visit
   state.selectOption('deployment-target', 'kubernetes');
   
   // Preselect all Rhize core services
@@ -26,6 +26,16 @@ if (savedState) {
       state.selectOption('rhize-core-services', option.id);
     });
   }
+  
+  // Preselect recommended deployment infrastructure
+  state.selectOption('cd-tool', 'argocd');
+  state.selectOption('container-registry', 'gitlab-registry');
+  state.selectOption('cluster-ingress', 'traefik');
+  state.selectOption('cluster-monitoring', 'lgtm-stack');
+  state.selectOption('identity-access', 'keycloak');
+  state.selectOption('core-database', 'postgresql');
+  state.selectOption('event-streaming', 'redpanda');
+  state.selectOption('timeseries-db', 'questdb');
 }
 
 // Subscribe to state changes
