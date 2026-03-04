@@ -7,6 +7,7 @@ export const presets = {
     snapshot: {
       selections: {
         'deployment-target': ['kubernetes'],
+        'cloud-platform': ['vultr'],
         'repository': ['gitlab'],
         'cd-tool': ['helm'],
         'container-registry': ['gitlab-registry'],
@@ -31,6 +32,7 @@ export const presets = {
     snapshot: {
       selections: {
         'deployment-target': ['kubernetes'],
+        'cloud-platform': ['eks'],
         'repository': ['gitlab'],
         'cd-tool': ['argocd'],
         'container-registry': ['gitlab-registry'],
@@ -55,6 +57,7 @@ export const presets = {
     snapshot: {
       selections: {
         'deployment-target': ['kubernetes'],
+        'cloud-platform': [],
         'repository': ['gitlab'],
         'cd-tool': ['argocd'],
         'container-registry': ['acr'],
@@ -79,6 +82,7 @@ export const presets = {
     snapshot: {
       selections: {
         'deployment-target': ['docker-compose'],
+        'cloud-platform': [],
         'repository': ['github'],
         'cd-tool': ['docker-compose'],
         'container-registry': ['docker-hub'],
@@ -103,6 +107,7 @@ export const presets = {
     snapshot: {
       selections: {
         'deployment-target': ['kubernetes'],
+        'cloud-platform': ['gcp-kubernetes'],
         'repository': ['gitlab'],
         'cd-tool': ['argocd'],
         'container-registry': ['gitlab-registry'],

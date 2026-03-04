@@ -52,7 +52,7 @@ npm run preview
 
 ## Deployment Domains
 
-The wizard guides you through selection of these infrastructure domains:
+The wizard guides you through selection of these infrastructure domains (15 total):
 
 ### 1. **Deployment Target**
 Choose your orchestration platform:
@@ -60,26 +60,33 @@ Choose your orchestration platform:
 - **Docker Compose** (supported) – Lightweight single-node deployments
 - **OpenShift** (suggested) – Enterprise Kubernetes with Red Hat support
 
-### 2. **Repository**
+### 2. **Cloud Platform**
+Choose your cloud provider for managed infrastructure (optional):
+- **Vultr** (preferred) – High-performance cloud with excellent value
+- **Amazon EKS** (preferred) – AWS managed Kubernetes service
+- **Google GKE** (preferred) – GCP managed Kubernetes service
+- **Azure AKS** (unsupported) – Limited Rhize expertise
+
+### 3. **Repository**
 Version control for your configuration:
 - **GitLab** (preferred) – Built-in registry and CI/CD
 - **GitHub** (supported) – Popular alternative with Actions
 - **Gitea** (supported) – Self-hosted lightweight Git
 
-### 3. **Continuous Deployment**
+### 4. **Continuous Deployment**
 Deployment automation tool:
 - **ArgoCD** (preferred) – GitOps CD for Kubernetes
 - **Helm** (supported) – Package manager and templating
 - **Flux** (supported) – Lightweight GitOps toolkit
 
-### 4. **Container Registry**
+### 5. **Container Registry**
 Storage for Docker images:
 - **GitLab Container Registry** (preferred)
 - **Azure Container Registry (ACR)** (supported)
 - **Amazon ECR** (supported)
 - **Docker Hub** (supported)
 
-### 5. **Cluster Storage**
+### 6. **Cluster Storage**
 Persistent block storage options:
 - **Local Path** (suggested) – Development only
 - **Ceph RBD** (supported) – Distributed HA storage
@@ -88,43 +95,43 @@ Persistent block storage options:
 - **Google Persistent Disk** (preferred)
 - **NVMe Local** (supported) – High-performance option
 
-### 6. **Cluster Ingress**
+### 7. **Cluster Ingress**
 Entry point for external traffic:
 - **Traefik** (preferred) – Modern ingress with MQTT/gRPC support
 - **NGINX Ingress** (supported) – Industry-standard reverse proxy
 
-### 7. **Cluster Monitoring**
+### 8. **Cluster Monitoring**
 Observability and telemetry stack:
 - **LGTM Stack** (preferred) – Loki, Grafana, Tempo, Mimir
 - **Prometheus + Grafana** (supported) – Lightweight metrics
 - **ELK Stack** (supported) – Elasticsearch-based logging
 - **Datadog** (suggested) – Commercial SaaS platform
 
-### 8. **Identity & Access Management**
+### 9. **Identity & Access Management**
 Authentication and authorization:
 - **Keycloak** (preferred) – Open-source identity provider
 - **Azure AD / Entra ID** (supported) – Microsoft cloud identity
 - **Okta** (supported) – Commercial identity platform
 
-### 9. **Core Database**
+### 10. **Core Database**
 Relational database for Keycloak and application data:
 - **PostgreSQL** (preferred) – Recommended relational DB
 - **MySQL / MariaDB** (supported) – Open-source alternative
 - **Managed CloudSQL** (supported) – Cloud provider managed
 
-### 10. **Event Streaming**
+### 11. **Event Streaming**
 Message broker for distributed events:
 - **Redpanda** (preferred) – Kafka-compatible, no JVM
 - **Apache Kafka** (supported) – Industry standard
 - **Solace** (suggested) – Enterprise event streaming
 
-### 11. **Time-Series Storage**
+### 12. **Time-Series Storage**
 Optimized database for sensor and operational data:
 - **QuestDB** (preferred) – Fast time-series optimized for Rhize
 - **InfluxDB** (supported) – Popular time-series database
 - **TimescaleDB** (supported) – PostgreSQL time-series extension
 
-### 12. **Rhize Core Services**
+### 13. **Rhize Core Services**
 Essential Rhize components (BaaS, ISA95, Admin UI are required):
 - **BaaS** – GraphQL API backend
 - **ISA95 Engine** – Manufacturing operations model
@@ -133,7 +140,7 @@ Essential Rhize components (BaaS, ISA95, Admin UI are required):
 - **TypeScript Host Service** – Custom business logic runtime
 - **Restate** – Distributed function orchestrator
 
-### 13. **Optional Services**
+### 14. **Optional Services**
 Additional capabilities:
 - **Appsmith** – Low-code dashboard builder
 - **Grafana Dashboards** – Pre-built monitoring
@@ -142,7 +149,7 @@ Additional capabilities:
 - **Audit Service** – Comprehensive audit logging
 - **BPMN Suite** – Visual workflow editor
 
-### 14. **Networking**
+### 15. **Networking**
 Domain names and TLS configuration:
 - Configure DNS records
 - TLS certificate strategy (cert-manager, manual, cloud provider)
