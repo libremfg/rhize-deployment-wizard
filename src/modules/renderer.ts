@@ -21,6 +21,7 @@ export class WizardRenderer {
         .option-node.supported rect { fill: #dbeafe; stroke: #3b82f6; }
         .option-node.suggested rect { fill: #fef3c7; stroke: #f59e0b; }
         .option-node.unsupported rect { fill: #e5e7eb; stroke: #9ca3af; }
+        .option-node.discouraged rect { fill: #fed7aa; stroke: #ea580c; }
         .option-node.unselected rect { fill: #f3f4f6; stroke: #d1d5db; }
         .option-node.selected rect { fill: #86efac; stroke: #10b981; stroke-width: 3; }
         .option-node:not(.disabled):hover rect { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)); }
