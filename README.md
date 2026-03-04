@@ -52,7 +52,7 @@ npm run preview
 
 ## Deployment Domains
 
-The wizard guides you through selection of these infrastructure domains (15 total):
+The wizard guides you through selection of these infrastructure domains (16 total):
 
 ### 1. **Deployment Target**
 Choose your orchestration platform:
@@ -69,24 +69,31 @@ Choose your cloud provider for managed infrastructure (optional):
 
 ### 3. **Repository**
 Version control for your configuration:
-- **GitLab** (preferred) – Built-in registry and CI/CD
-- **GitHub** (supported) – Popular alternative with Actions
-- **Gitea** (supported) – Self-hosted lightweight Git
+- **GitLab** (preferred) – Primary Git hosting with container registry
+- **GitHub** (supported) – Popular Git platform with extensive integrations
+- **Gitea** (unsupported) – Self-hosted lightweight Git service
 
-### 4. **Continuous Deployment**
+### 4. **CI/CD Pipeline**
+Automation for building, testing, scanning, and pushing container images:
+- **GitLab CI/CD** (preferred) – Built-in CI/CD with integrated runners
+- **GitHub Actions** (preferred) – Built-in workflow automation for GitHub
+- **Jenkins** (supported) – Self-hosted flexible CI/CD orchestration
+- **CircleCI** (unsupported) – Commercial CI/CD SaaS platform
+
+### 5. **CD Deployment Tool**
 Deployment automation tool:
 - **ArgoCD** (preferred) – GitOps CD for Kubernetes
 - **Helm** (supported) – Package manager and templating
 - **Flux** (supported) – Lightweight GitOps toolkit
 
-### 5. **Container Registry**
+### 6. **Container Registry**
 Storage for Docker images:
 - **GitLab Container Registry** (preferred)
 - **Azure Container Registry (ACR)** (supported)
 - **Amazon ECR** (supported)
 - **Docker Hub** (supported)
 
-### 6. **Cluster Storage**
+### 7. **Cluster Storage**
 Persistent block storage options:
 - **Local Path** (suggested) – Development only
 - **Ceph RBD** (supported) – Distributed HA storage
@@ -95,43 +102,43 @@ Persistent block storage options:
 - **Google Persistent Disk** (preferred)
 - **NVMe Local** (supported) – High-performance option
 
-### 7. **Cluster Ingress**
+### 8. **Cluster Ingress**
 Entry point for external traffic:
 - **Traefik** (preferred) – Modern ingress with MQTT/gRPC support
 - **NGINX Ingress** (supported) – Industry-standard reverse proxy
 
-### 8. **Cluster Monitoring**
+### 9. **Cluster Monitoring**
 Observability and telemetry stack:
 - **LGTM Stack** (preferred) – Loki, Grafana, Tempo, Mimir
 - **Prometheus + Grafana** (supported) – Lightweight metrics
 - **ELK Stack** (supported) – Elasticsearch-based logging
 - **Datadog** (suggested) – Commercial SaaS platform
 
-### 9. **Identity & Access Management**
+### 10. **Identity & Access Management**
 Authentication and authorization:
 - **Keycloak** (preferred) – Open-source identity provider
 - **Azure AD / Entra ID** (supported) – Microsoft cloud identity
 - **Okta** (supported) – Commercial identity platform
 
-### 10. **Core Database**
+### 11. **Core Database**
 Relational database for Keycloak and application data:
 - **PostgreSQL** (preferred) – Recommended relational DB
 - **MySQL / MariaDB** (supported) – Open-source alternative
 - **Managed CloudSQL** (supported) – Cloud provider managed
 
-### 11. **Event Streaming**
+### 12. **Event Streaming**
 Message broker for distributed events:
 - **Redpanda** (preferred) – Kafka-compatible, no JVM
 - **Apache Kafka** (supported) – Industry standard
 - **Solace** (suggested) – Enterprise event streaming
 
-### 12. **Time-Series Storage**
+### 13. **Time-Series Storage**
 Optimized database for sensor and operational data:
 - **QuestDB** (preferred) – Fast time-series optimized for Rhize
 - **InfluxDB** (supported) – Popular time-series database
 - **TimescaleDB** (supported) – PostgreSQL time-series extension
 
-### 13. **Rhize Core Services**
+### 14. **Rhize Core Services**
 Essential Rhize components (BaaS, ISA95, Admin UI are required):
 - **BaaS** – GraphQL API backend
 - **ISA95 Engine** – Manufacturing operations model
@@ -140,7 +147,7 @@ Essential Rhize components (BaaS, ISA95, Admin UI are required):
 - **TypeScript Host Service** – Custom business logic runtime
 - **Restate** – Distributed function orchestrator
 
-### 14. **Optional Services**
+### 15. **Optional Services**
 Additional capabilities:
 - **Appsmith** – Low-code dashboard builder
 - **Grafana Dashboards** – Pre-built monitoring
@@ -149,7 +156,7 @@ Additional capabilities:
 - **Audit Service** – Comprehensive audit logging
 - **BPMN Suite** – Visual workflow editor
 
-### 15. **Networking**
+### 16. **Networking**
 Domain names and TLS configuration:
 - Configure DNS records
 - TLS certificate strategy (cert-manager, manual, cloud provider)

@@ -25,7 +25,7 @@ export const deploymentDomains: DeploymentDomain[] = [
       {
         id: 'gcp-kubernetes',
         name: 'Google Kubernetes Engine (GKE)',
-        level: 'preferred',
+        level: 'supported',
         description: 'GCP managed Kubernetes service. Strong Kubernetes support with built-in observability.',
         documentationUrl: 'https://cloud.google.com/kubernetes-engine',
       },
@@ -65,7 +65,7 @@ export const deploymentDomains: DeploymentDomain[] = [
       {
         id: 'openshift',
         name: 'OpenShift',
-        level: 'suggested',
+        level: 'unsupported',
         description: 'Enterprise Kubernetes distribution with built-in security and compliance features. Red Hat supported.',
         resourceRequirements: { cpu: '12+ cores', memory: '24GB+', storage: '100GB+' },
         documentationUrl: 'https://www.redhat.com/en/technologies/cloud-computing/openshift',
@@ -83,14 +83,14 @@ export const deploymentDomains: DeploymentDomain[] = [
         id: 'gitlab',
         name: 'GitLab',
         level: 'preferred',
-        description: 'Primary CI/CD integration. Includes built-in Docker registry, container scanning, and deployment tracking.',
+        description: 'Primary Git hosting. Includes built-in container registry and runner infrastructure.',
         documentationUrl: 'https://gitlab.com',
       },
       {
         id: 'github',
         name: 'GitHub',
-        level: 'unsupported',
-        description: 'Popular alternative with strong GitHub Actions integration and community support.',
+        level: 'supported',
+        description: 'Popular Git hosting platform with extensive integrations and community support.',
         documentationUrl: 'https://github.com',
       },
       {
@@ -103,9 +103,34 @@ export const deploymentDomains: DeploymentDomain[] = [
     ],
   },
   {
+    id: 'ci-pipeline',
+    name: 'CI/CD Pipeline',
+    description: 'Automation for building, testing, scanning, and pushing container images',
+    required: true,
+    allowMultiple: false,
+    options: [
+      {
+        id: 'gitlab-ci',
+        name: 'GitLab CI/CD',
+        level: 'preferred',
+        description: 'Built-in CI/CD for GitLab. Integrated pipeline, container registry, runner management.',
+        dependencies: ['gitlab'],
+        documentationUrl: 'https://docs.gitlab.com/ee/ci/',
+      },
+      {
+        id: 'github-actions',
+        name: 'GitHub Actions',
+        level: 'unsupported',
+        description: 'Built-in CI/CD for GitHub. Free for public repos, powerful workflow automation.',
+        dependencies: ['github'],
+        documentationUrl: 'https://github.com/features/actions',
+      },
+    ],
+  },
+  {
     id: 'cd-tool',
-    name: 'Continuous Deployment',
-    description: 'Tool for automatic deployment and configuration management',
+    name: 'CD Deployment Tool',
+    description: 'Tool for automatic deployment and configuration management to clusters',
     required: true,
     allowMultiple: false,
     options: [
