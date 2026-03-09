@@ -1,6 +1,21 @@
 import type { DeploymentDomain, WizardState } from '../types/index.js';
 
 export class WizardRenderer {
+  // Check if an option conflicts with currently selected options
+  private static isConflicted(option: any, currentSelections: Record<string, string[]>): boolean {
+    if (!option.conflicts) return false;
+    
+    for (const conflictId of option.conflicts) {
+      // Check all domains for the conflicting option
+      for (const domainId in currentSelections) {
+        if (currentSelections[domainId].includes(conflictId)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   static render(container: HTMLElement, domains: DeploymentDomain[], state: WizardState, onOptionClick: (domainId: string, optionId: string) => void): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'roadmap-svg');
@@ -68,12 +83,16 @@ export class WizardRenderer {
         }
 
         const isSelected = state.isSelected(domain.id, option.id);
+        const allSelections = state.getAllSelections();
+        const isConflicted = this.isConflicted(option, allSelections);
+        const isDisabled = option.disabled || isConflicted;
+        
         const nodeGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        nodeGroup.setAttribute('class', `option-node ${isSelected ? 'selected' : option.level}${option.disabled ? ' disabled' : ''}`);
+        nodeGroup.setAttribute('class', `option-node ${isSelected ? 'selected' : option.level}${isDisabled ? ' disabled' : ''}`);
         nodeGroup.setAttribute('transform', `translate(${xOffset}, ${rowY})`);
 
         // Click handler (skip for disabled options)
-        if (!option.disabled) {
+        if (!isDisabled) {
           nodeGroup.addEventListener('click', () => {
             onOptionClick(domain.id, option.id);
           });

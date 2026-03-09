@@ -2,6 +2,29 @@ import type { DeploymentDomain } from '../types/index.js';
 
 export const deploymentDomains: DeploymentDomain[] = [
   {
+    id: 'deployment-mode',
+    name: 'Deployment Mode',
+    description: 'Choose your high-availability requirements',
+    required: true,
+    allowMultiple: false,
+    options: [
+      {
+        id: 'high-availability',
+        name: 'High Availability',
+        level: 'preferred',
+        description: 'Production-grade HA deployment with multiple replicas, failover, and redundancy. Requires multi-node cluster.',
+        documentationUrl: 'https://docs.rhize.com/deploy/high-availability/',
+      },
+      {
+        id: 'single-instance',
+        name: 'Single Instance',
+        level: 'supported',
+        description: 'Simplified single-node deployment for development, testing, or edge environments. Lower resource requirements.',
+        documentationUrl: 'https://docs.rhize.com/deploy/single-instance/',
+      },
+    ],
+  },
+  {
     id: 'cloud-platform',
     name: 'Cloud Platform',
     description: 'Choose your cloud provider for managed Kubernetes and infrastructure',
@@ -20,6 +43,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         name: 'Amazon EKS',
         level: 'preferred',
         description: 'AWS managed Kubernetes service. Fully integrated with AWS services (ECR, RDS, EBS).',
+        conflicts: ['high-availability'],
         documentationUrl: 'https://aws.amazon.com/eks/',
       },
       {
@@ -27,6 +51,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         name: 'Google Kubernetes Engine (GKE)',
         level: 'supported',
         description: 'GCP managed Kubernetes service. Strong Kubernetes support with built-in observability.',
+        conflicts: ['high-availability'],
         documentationUrl: 'https://cloud.google.com/kubernetes-engine',
       },
       {
@@ -34,6 +59,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         name: 'Azure Kubernetes Service (AKS)',
         level: 'unsupported',
         description: 'Microsoft Azure managed Kubernetes service. Limited Rhize expertise and integration.',
+        conflicts: ['high-availability'],
         documentationUrl: 'https://azure.microsoft.com/en-us/services/kubernetes-service/',
       },
     ],
@@ -64,6 +90,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         level: 'supported',
         description: 'Lightweight containerization for development, testing, or edge deployments. Limited to single-node setups.',
         resourceRequirements: { cpu: '4+ vCPU', memory: '8 GiB+', storage: '20 GiB+' },
+        conflicts: ['high-availability'],
         documentationUrl: 'https://docs.docker.com/compose/',
       },
       {
@@ -249,6 +276,7 @@ export const deploymentDomains: DeploymentDomain[] = [
         level: 'supported',
         description: 'Development/testing only. Uses local node storage. No redundancy or migration support.',
         resourceRequirements: { storage: '200 GiB+ local' },
+        conflicts: ['high-availability'],
         documentationUrl: 'https://github.com/rancher/local-path-provisioner',
       },
       {

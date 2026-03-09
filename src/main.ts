@@ -16,6 +16,9 @@ const savedState = StorageManager.loadSnapshot();
 if (savedState) {
   state.fromJSON(savedState);
 } else {
+  // Preselect deployment mode
+  state.selectOption('deployment-mode', 'high-availability');
+  
   // Preselect deployment target on initial visit
   state.selectOption('deployment-target', 'kubernetes');
   

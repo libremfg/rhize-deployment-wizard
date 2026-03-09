@@ -6,6 +6,7 @@ export const presets = {
     description: 'Minimal viable Rhize deployment for evaluation and testing',
     snapshot: {
       selections: {
+        'deployment-mode': ['high-availability'],
         'deployment-target': ['kubernetes'],
         'cloud-platform': ['vultr'],
         'repository': ['gitlab'],
@@ -32,8 +33,9 @@ export const presets = {
     description: 'Full-featured production-ready Rhize deployment with HA and observability',
     snapshot: {
       selections: {
+        'deployment-mode': ['high-availability'],
         'deployment-target': ['kubernetes'],
-        'cloud-platform': ['eks'],
+        'cloud-platform': ['vultr'],
         'repository': ['gitlab'],
         'ci-pipeline': ['gitlab-ci'],
         'cd-tool': ['argocd'],
@@ -58,8 +60,9 @@ export const presets = {
     description: 'Enterprise deployment with managed services and commercial options',
     snapshot: {
       selections: {
+        'deployment-mode': ['high-availability'],
         'deployment-target': ['kubernetes'],
-        'cloud-platform': ['aks'],
+        'cloud-platform': ['vultr'],
         'repository': ['gitlab'],
         'ci-pipeline': ['gitlab-ci'],
         'cd-tool': ['argocd'],
@@ -84,6 +87,7 @@ export const presets = {
     description: 'Lightweight deployment for edge computing and IoT environments',
     snapshot: {
       selections: {
+        'deployment-mode': ['single-instance'],
         'deployment-target': ['docker-compose'],
         'cloud-platform': ['vultr'],
         'repository': ['github'],
@@ -110,6 +114,7 @@ export const presets = {
     description: 'Configuration matching demo3-v4 for showcasing Rhize features',
     snapshot: {
       selections: {
+        'deployment-mode': ['high-availability'],
         'deployment-target': ['kubernetes'],
         'cloud-platform': ['gcp-kubernetes'],
         'repository': ['gitlab'],
