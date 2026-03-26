@@ -35,6 +35,7 @@ export class WizardRenderer {
         .option-node.preferred rect { fill: #d1fae5; stroke: #10b981; }
         .option-node.supported rect { fill: #dbeafe; stroke: #3b82f6; }
         .option-node.suggested rect { fill: #fef3c7; stroke: #f59e0b; }
+        .option-node.untested rect { fill: #ede9fe; stroke: #7c3aed; }
         .option-node.unsupported rect { fill: #e5e7eb; stroke: #9ca3af; }
         .option-node.discouraged rect { fill: #fed7aa; stroke: #ea580c; }
         .option-node.unselected rect { fill: #f3f4f6; stroke: #d1d5db; }
@@ -49,6 +50,14 @@ export class WizardRenderer {
     let yOffset = 30;
 
     for (const domain of domains) {
+      // Skip domains whose dependencies are not met
+      if (domain.dependencies && domain.dependencies.length > 0) {
+        const allSelections = state.getAllSelections();
+        const active = domain.dependencies.every(depId =>
+          Object.values(allSelections).some(ids => ids.includes(depId))
+        );
+        if (!active) continue;
+      }
       const groupEl = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       groupEl.setAttribute('class', 'domain-group');
       groupEl.setAttribute('transform', `translate(0, ${yOffset})`);
@@ -167,7 +176,7 @@ export class WizardRenderer {
       }
       // Update class
       if (isSelected) {
-        groupEl.classList.remove('preferred', 'supported', 'suggested', 'unselected');
+        groupEl.classList.remove('preferred', 'supported', 'suggested', 'untested', 'unsupported', 'discouraged', 'unselected');
         groupEl.classList.add('selected');
       } else {
         groupEl.classList.remove('selected');

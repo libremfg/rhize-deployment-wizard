@@ -36,7 +36,7 @@ if (savedState) {
   state.selectOption('cluster-ingress', 'traefik');
   state.selectOption('cluster-monitoring', 'lgtm-stack');
   state.selectOption('identity-access', 'keycloak');
-  state.selectOption('core-database', 'postgresql');
+  state.selectOption('keycloak-database', 'postgresql');
   state.selectOption('event-streaming', 'redpanda');
   state.selectOption('timeseries-db', 'questdb');
 }
@@ -184,6 +184,53 @@ function attachEventListeners() {
   });
 }
 
+// When an option is selected, automatically resolve conflicts in all other domains.
+// The conflicting option is replaced by the first option in that domain that is
+// neither conflicting with any current selection nor disabled.
+function resolveConflicts(changedDomainId: string, selectedOptionId: string): void {
+  const newlySelectedOption = deploymentDomains
+    .find(d => d.id === changedDomainId)?.options
+    .find(o => o.id === selectedOptionId);
+
+  for (const domain of deploymentDomains) {
+    if (domain.id === changedDomainId) continue;
+
+    const selectedInDomain = state.getSelectedOptions(domain.id);
+    for (const selectedId of selectedInDomain) {
+      const option = domain.options.find(o => o.id === selectedId);
+      if (!option) continue;
+
+      // Conflict is bi-directional: either side can declare it
+      const hasConflict =
+        option.conflicts?.includes(selectedOptionId) ||
+        newlySelectedOption?.conflicts?.includes(selectedId);
+
+      if (!hasConflict) continue;
+
+      // Deselect the conflicting option
+      state.deselectOption(domain.id, selectedId);
+
+      // For single-select domains, pick the first safe fallback
+      if (!domain.allowMultiple) {
+        const currentSelections = state.getAllSelections();
+        const fallback = domain.options.find(o => {
+          if (o.id === selectedId || o.disabled) return false;
+          // Must not conflict with any currently selected option
+          if (o.conflicts?.some(c =>
+            Object.values(currentSelections).some(ids => ids.includes(c))
+          )) return false;
+          // The newly selected option must not conflict with this fallback
+          if (newlySelectedOption?.conflicts?.includes(o.id)) return false;
+          return true;
+        });
+        if (fallback) {
+          state.selectOption(domain.id, fallback.id);
+        }
+      }
+    }
+  }
+}
+
 function renderWizard() {
   const container = document.getElementById('wizard-render');
   if (!container) return;
@@ -200,6 +247,11 @@ function renderWizard() {
       }
     }
     state.toggleOption(domainId, optionId);
+
+    // If the option is now selected, resolve any conflicts it introduced
+    if (state.isSelected(domainId, optionId)) {
+      resolveConflicts(domainId, optionId);
+    }
   });
 }
 

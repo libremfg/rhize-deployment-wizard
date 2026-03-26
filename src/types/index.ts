@@ -1,4 +1,4 @@
-export type Level = 'required' | 'preferred' | 'supported' | 'suggested' | 'unsupported' | 'discouraged';
+export type Level = 'required' | 'preferred' | 'supported' | 'suggested' | 'untested' | 'unsupported' | 'discouraged';
 
 export interface Resources {
   cpu?: string;
@@ -27,6 +27,7 @@ export interface DeploymentDomain {
   required: boolean;
   allowMultiple: boolean;
   options: DeploymentOption[];
+  dependencies?: string[]; // option IDs that must be selected for this domain to be active
 }
 
 export interface WizardSnapshot {

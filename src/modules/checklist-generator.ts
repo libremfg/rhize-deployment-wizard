@@ -114,6 +114,7 @@ export class ChecklistGenerator {
     .level.preferred { background: #d1fae5; color: #065f46; }
     .level.supported { background: #dbeafe; color: #0c4a6e; }
     .level.suggested { background: #fef3c7; color: #78350f; }
+    .level.untested { background: #ede9fe; color: #4c1d95; }
     .helm-command { background: #1f2937; color: #f3f4f6; padding: 12px; border-radius: 4px; overflow-x: auto; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
     .step { padding: 10px; background: #eff6ff; border-left: 4px solid #0284c7; margin: 8px 0; }
     .resources { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }

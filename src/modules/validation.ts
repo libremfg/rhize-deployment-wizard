@@ -16,6 +16,8 @@ export class ValidationEngine {
 
     // Check required domains
     for (const domain of this.domains) {
+      const isActive = this.isDomainActive(domain, selections);
+      if (!isActive) continue;
       if (domain.required && (!selections[domain.id] || selections[domain.id].length === 0)) {
         errors.push({
           message: `${domain.name} is required`,
@@ -106,8 +108,13 @@ export class ValidationEngine {
     };
   }
 
+  private isDomainActive(domain: DeploymentDomain, selections: Record<string, string[]>): boolean {
+    if (!domain.dependencies || domain.dependencies.length === 0) return true;
+    return domain.dependencies.every(depId => this.isSelected(depId, selections));
+  }
+
   private isDependencySatisfied(dependencyId: string, selections: Record<string, string[]>): boolean {
-    // First, check if it's a domain-level dependency (e.g., 'core-database', 'event-streaming')
+    // First, check if it's a domain-level dependency (e.g., 'keycloak-database', 'event-streaming')
     for (const domain of this.domains) {
       if (domain.id === dependencyId) {
         // Domain-level dependency: check if domain has ANY selection
